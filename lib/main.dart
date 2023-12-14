@@ -1,3 +1,5 @@
+import 'package:die_wetter_app/pages/weather_app.dart';
+import 'package:die_wetter_app/repository/weather_repository.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,17 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: WeatherApp(),
+    final WeatherRepository weatherRepository = WeatherRepository();
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Wetter-App'),
+        ),
+        body: WeatherApp(weatherRepository: weatherRepository),
+      ),
     );
-  }
-}
-
-class WeatherApp extends StatelessWidget {
-  const WeatherApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
